@@ -134,7 +134,8 @@ module.exports = postcss.plugin('postcss-px-to-viewport', function (options) {
     });
 
     if (landscapeRules.length > 0) {
-      var landscapeRoot = new postcss.AtRule({ params: '(orientation: landscape)', name: 'media' });
+      var atRule = postcss.AtRule || postcss.atRule
+      var landscapeRoot = atRule({ params: '(orientation: landscape)', name: 'media' });
 
       landscapeRules.forEach(function(rule) {
         landscapeRoot.append(rule);
